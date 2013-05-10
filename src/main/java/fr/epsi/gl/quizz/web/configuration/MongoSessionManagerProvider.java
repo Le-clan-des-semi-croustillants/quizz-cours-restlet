@@ -19,7 +19,7 @@ public class MongoSessionManagerProvider implements Provider<MongoSessionManager
                 .withHost("mongodb://cloudbees:9951e0fe3d6eedbc40213112625ac63f@linus.mongohq.com:10027/rzG1TpwGpZDTFe4QS2HI9Q")
                 .withPort(10027);
          */
-        return MongoSessionManager.create(new ContextBuilder("fr.epsi.gl.quizz.persistance.mongo.mapping"), Settings.defaultInstance().withDbName("quizz").withDefaultUpdateStrategy(UpdateStrategies.DIFF).withHost("mongodb://cloudbees:9951e0fe3d6eedbc40213112625ac63f@linus.mongohq.com:10027/rzG1TpwGpZDTFe4QS2HI9Q").withPort(10027));
+        return MongoSessionManager.create(new ContextBuilder("fr.epsi.gl.quizz.persistance.mongo.mapping"), Settings.defaultInstance().withDbName("quizz").withDefaultUpdateStrategy(UpdateStrategies.DIFF));
         //return MongoSessionManager.create(new ContextBuilder("fr.epsi.gl.quizz.persistance.mongo.mapping"), settings);
     }
 }
