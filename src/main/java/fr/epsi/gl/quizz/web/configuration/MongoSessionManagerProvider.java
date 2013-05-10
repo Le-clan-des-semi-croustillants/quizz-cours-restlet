@@ -1,5 +1,7 @@
 package fr.epsi.gl.quizz.web.configuration;
 
+import com.google.common.collect.Lists;
+import com.mongodb.ServerAddress;
 import org.mongolink.MongoSessionManager;
 import org.mongolink.Settings;
 import org.mongolink.domain.UpdateStrategies;
@@ -10,6 +12,11 @@ import javax.inject.Provider;
 public class MongoSessionManagerProvider implements Provider<MongoSessionManager> {
     @Override
     public MongoSessionManager get() {
-        return MongoSessionManager.create(new ContextBuilder("fr.epsi.gl.quizz.persistance.mongo.mapping"), Settings.defaultInstance().withDbName("QuizzDatabase").withDefaultUpdateStrategy(UpdateStrategies.DIFF));
+        /*Settings settings = Settings.defaultInstance()
+                .withDefaultUpdateStrategy(UpdateStrategies.DIFF)
+                .withDbName("db")
+                .withAddresses(Lists.newArrayList(new ServerAddress("mongodb://cloudbees:9951e0fe3d6eedbc40213112625ac63f@linus.mongohq.com:10027/rzG1TpwGpZDTFe4QS2HI9Q", 10027)));
+         */
+        return MongoSessionManager.create(new ContextBuilder("fr.epsi.gl.quizz.persistance.mongo.mapping"), Settings.defaultInstance().withDbName("quizz").withDefaultUpdateStrategy(UpdateStrategies.DIFF).withAddresses(Lists.newArrayList(new ServerAddress("mongodb://cloudbees:9951e0fe3d6eedbc40213112625ac63f@linus.mongohq.com:10027/rzG1TpwGpZDTFe4QS2HI9Q", 10027))));
     }
 }
